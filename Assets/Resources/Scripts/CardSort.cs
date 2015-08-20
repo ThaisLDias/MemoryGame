@@ -5,46 +5,59 @@ using UnityEngine.UI;
 
 public class CardSort : MonoBehaviour {
 
-	public List<int> cards = new List<int>(){1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21};
+	public List<CardObject> cards = new List<CardObject>();
 	public Sprite[] imagesAnimals = new Sprite[10];
 	public Sprite[] imagesPlaces = new Sprite[10];
-	public int[] savedValues;
-	public bool canRunn;
+	int random;
+	int i = 0;
+	int b = 0;
 
-	void Start(){
-	
-		imagesAnimals = Resources.LoadAll<Sprite> ("Assets/Animals");
-		imagesPlaces = Resources.LoadAll <Sprite>("Assets/Habitats");
-		canRunn = false;
-		int i = 0;
 
-		while(i < cards.Count - 1) {
-			string animal =  cards[MyRandomRange(1,21,savedValues,canRunn)].ToString();
-			string habitat = cards[Random.Range(1,20)].ToString();
-			Debug.Log("A: " + animal +" H: " + habitat );
-			SortImagePar(animal,habitat);
-			i++;
-		}
-	}
-	void SortImagePar(string animals, string places){
+	public void PutCardImage(){
+		while(i < 20) {
 
-		int randomSprite = Random.Range (0, 9);
-		Debug.Log (randomSprite);
-		GameObject.Find (animals).GetComponent<CardObject>().thisSprite = imagesAnimals[randomSprite];
-		GameObject.Find (places).GetComponent<CardObject>().thisSprite = imagesPlaces[randomSprite];
-		GameObject.Find (animals).GetComponent<CardObject>().index = randomSprite;
-		GameObject.Find (places).GetComponent<CardObject>().index = randomSprite;
-		}
+			random = Random.Range (0, cards.Count);
+			int random2 = Random.Range (0, cards.Count);
 
-	public int MyRandomRange(int a, int b, int[] num, bool canRun)
-	{
-		int randomic = Random.Range (a, b);
-		for (int i = 0; i < num.Count; i++) {
-			if(randomic == num[i])
-				randomic = Random.Range (a, b);
-			else{
-				return canRun = true;
+			if(random2 == random) 
+			{
+				random2 = Random.Range (0, cards.Count);
+			}
+			else 
+			{
+				Debug.Log (random.ToString() + " : " + random2.ToString());
+				int animal =  random;
+				int habitat = random2;
+
+				if(cards[animal].valueNull && 
+				   cards[habitat].valueNull)
+				{
+					SortImagePar(animal,habitat, cards);
+					i++;
+				}
+				else
+				{
+					random2 = random;
+				}
 			}
 		}
+	}
+	void SortImagePar(int animals, int places, List<CardObject> cardList){
+
+		int randomSprite = Random.Range (0, 10);
+
+		cardList[animals].thisSprite = imagesAnimals[randomSprite];
+		cardList[places].thisSprite = imagesPlaces[randomSprite];
+		cardList[animals].index = randomSprite;
+		cardList[places].index = randomSprite;
+		cardList[animals].valueNull = false;
+		cardList[places].valueNull = false;
+	}
+	void Update()
+	{
+		if (b == 0) {
+			PutCardImage ();
+		}
+		b = 1;
 	}
 }

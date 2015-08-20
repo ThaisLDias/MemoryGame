@@ -9,11 +9,7 @@ public class CardObject : MonoBehaviour {
 	public Sprite cardDown;
 	public int index;
 	public bool isDown;
-	// Use this for initialization
-	void Start () {
-		index = Convert.ToInt32(this.gameObject.name);
-		isDown = true;
-	}
+	public bool valueNull;
 
 	void Update() {
 
