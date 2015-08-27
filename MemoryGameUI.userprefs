@@ -1,9 +1,10 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Resources\Scripts\CardSort.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Resources\Scripts\SelecterBehaviour.cs">
     <Files>
-      <File FileName="Assets\Resources\Scripts\CardSort.cs" Line="34" Column="6" />
-      <File FileName="Assets\Resources\Scripts\CardObject.cs" Line="14" Column="2" />
+      <File FileName="Assets\Resources\Scripts\CardObject.cs" Line="17" Column="26" />
+      <File FileName="Assets\Resources\Scripts\CardSort.cs" Line="92" Column="38" />
+      <File FileName="Assets\Resources\Scripts\SelecterBehaviour.cs" Line="66" Column="30" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
